@@ -5,44 +5,35 @@
 	<groupId>org.example</groupId>
 	<artifactId>SimpleWOApp</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	<packaging>woapplication</packaging>
+	<packaging>jar</packaging>
 	<properties>
+		<womodular.version>1.0.0</womodular.version>
 	</properties>
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>com.webobjects</groupId>
-				<artifactId>webobjects-bom</artifactId>
-				<version>5.4.3</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 	<dependencies>
 		<dependency>
-			<groupId>com.webobjects</groupId>
-			<artifactId>JavaEOAccess</artifactId>
+			<groupId>org.wocommunity</groupId>
+			<artifactId>wonder-modular-eoaccess</artifactId>
+			<version>${womodular.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.webobjects</groupId>
-			<artifactId>JavaEOControl</artifactId>
+			<groupId>org.wocommunity</groupId>
+			<artifactId>wonder-modular-eocontrol</artifactId>
+			<version>${womodular.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.webobjects</groupId>
-			<artifactId>JavaFoundation</artifactId>
+			<groupId>org.wocommunity</groupId>
+			<artifactId>wonder-modular-foundation</artifactId>
+			<version>${womodular.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.webobjects</groupId>
-			<artifactId>JavaJDBCAdaptor</artifactId>
+			<groupId>org.wocommunity</groupId>
+			<artifactId>wonder-modular-jdbcadaptor</artifactId>
+			<version>${womodular.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.webobjects</groupId>
-			<artifactId>JavaWebObjects</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.webobjects</groupId>
-			<artifactId>JavaXML</artifactId>
+			<groupId>org.wocommunity</groupId>
+			<artifactId>wonder-modular-webobjects</artifactId>
+			<version>${womodular.version}</version>
 		</dependency>
 	</dependencies>
 	<build>
@@ -76,12 +67,7 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.1</version>
 				<configuration>
-					<source>21</source>
-					<target>21</target>
-					<compilerArgs>
-						<compilerArg>--add-exports</compilerArg>
-						<compilerArg>java.base/sun.security.action=ALL-UNNAMED</compilerArg>
-					</compilerArgs>
+					<release>25</release>
 				</configuration>
 			</plugin>
 		</plugins>
