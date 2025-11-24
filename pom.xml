@@ -1,11 +1,11 @@
-<project xmlns="https://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.example</groupId>
 	<artifactId>SimpleWOApp</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>jlink</packaging>
 	<properties>
 		<womodular.version>1.0.0</womodular.version>
 	</properties>
@@ -40,34 +40,45 @@
 		<sourceDirectory>Sources</sourceDirectory>
 		<resources>
 			<resource>
-				<targetPath>Resources</targetPath>
+				<targetPath>META-INF/webobjects/Resources</targetPath>
 				<filtering>false</filtering>
 				<directory>Components</directory>
 			</resource>
 			<resource>
-				<targetPath>Resources</targetPath>
+				<targetPath>META-INF/webobjects/Resources</targetPath>
 				<filtering>false</filtering>
 				<directory>Resources</directory>
 			</resource>
 			<resource>
-				<targetPath>WebServerResources</targetPath>
+				<targetPath>META-INF/webobjects/WebServerResources</targetPath>
 				<filtering>false</filtering>
 				<directory>WebServerResources</directory>
 			</resource>
+			<resource>
+				<targetPath>META-INF/webobjects/Resources</targetPath>
+				<filtering>true</filtering>
+				<directory>FilteredResources</directory>
+			</resource>
 		</resources>
 		<plugins>
-			<plugin>
-				<groupId>io.github.wocommunity</groupId>
-				<artifactId>wolifecycle-maven-plugin</artifactId>
-				<version>2.7</version>
-				<extensions>true</extensions>
-			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.1</version>
 				<configuration>
 					<release>25</release>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jlink-plugin</artifactId>
+				<version>3.2.0</version>
+				<extensions>true</extensions>
+				<configuration>
+					<stripDebug>true</stripDebug>
+					<noHeaderFiles>true</noHeaderFiles>
+					<noManPages>true</noManPages>
+					<compress>zip-6</compress>
 				</configuration>
 			</plugin>
 		</plugins>
